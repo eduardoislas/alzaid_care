@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Resultados</h5>
+            </div>
+            <div class="ibox-content">
+                {% if results_list %}
+                    <div class="table-responsive">
+                        <table class="table table-striped dataTables">
+                            <thead>
+                                <tr>
+                                    <th>Valoración</th>
+                                    <th>Cuidador</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for result in results_list %}
+                                    <tr>
+                                        <td>{{valoration.name}}</td>
+                                        <td>{{result.first_name}}&nbsp;{{result.last_name}}</td>
+                                        <td class="fa-icons">
+                                            <a href="{% url 'instruments_user_results' valoration.id result.id %}" data-toggle="tooltip" title="Ver resultados"><i class="fa fa-list-alt text-muted"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if results_list.has_previous %}
+                                <li class="page-item"><a href="?page={{results_list.previous_page_number }}">Anterior</a></li>
+                            {% else %}
+                                <li class="page-item disabled"><a href="">Anterior</a></li>
+                            {% endif %}
+                            <li class="page-item"><a class="page-link" href="#">{{ results_list.number }}</a></li>
+                            {% if results_list.has_next %}
+                                <li class="page-item"><a href="?page={{ results_list.next_page_number }}">Siguiente</a></li>
+                            {% else %}
+                                <li class="page-item disabled"><a href="">Siguiente</a></li>
+                            {% endif %}
+                            
+                        </ul>
+                    </nav>
+
+                {% else %}
+                    <p>Aún no hay resultados</p>
+                {% endif %}
+                <hr class="hr-dashed">
+                <a href="{% url 'valorations' %}" class="btn btn-white">Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+
+    
+    
