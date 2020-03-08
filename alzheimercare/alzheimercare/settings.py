@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'alzheimercare.wsgi.application'
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'alzaid_care',
         'USER': 'root',
-        'PASSWORD': 'sesamo',
+        'PASSWORD': 'acisl@b2020',
         'HOST': 'localhost',
         'PORT': '3306',
     }
