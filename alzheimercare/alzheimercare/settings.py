@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'alzaid_care',
         'USER': 'root',
         'PASSWORD': 'acisl@b2020',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
